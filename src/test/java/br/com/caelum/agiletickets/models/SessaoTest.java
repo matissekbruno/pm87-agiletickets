@@ -14,11 +14,13 @@ public class SessaoTest {
 	}
 	
 	@Test
-	public void deveVender5ingressosSeHa10vagas() throws Exception {
+	public void deveVender50ingressoSeHa50vagas() throws Exception {
 		Sessao sessao = new Sessao();
-		sessao.setTotalIngressos(10);
-		
-		Assert.assertTrue(sessao.podeReservar(5));
+        sessao.setTotalIngressos(50);
+
+        Assert.assertTrue(sessao.podeReservar(50));
+        
+
 	}
 
 	@Test
