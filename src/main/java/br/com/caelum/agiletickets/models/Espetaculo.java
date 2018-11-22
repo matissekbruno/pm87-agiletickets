@@ -99,26 +99,20 @@ public class Espetaculo {
      * Repare que a data da primeira sessao é sempre a data inicial.
      */
 	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) {
-		List<Sessao> listaSessoes = new ArrayList<Sessao>();
-		int intervalo;
-		if (periodicidade.equals(Periodicidade.SEMANAL))
-			intervalo = 7;
-		else
-			intervalo = 1;
 		
+		List<Sessao> listaSessoes = new ArrayList<Sessao>();		
 		LocalDate date = new LocalDate(inicio);
-		while (date.isBefore(fim) || date.isEqual(fim)) {
-			
+		int intervalo = periodicidade.getIntervalo();
+
+		while (date.isBefore(fim) || date.isEqual(fim)) {	
 			Sessao sessao = new Sessao();
 			DateTime dateTime = date.toDateTime(horario);		
-
 			sessao.setEspetaculo(this);
 			sessao.setInicio(dateTime);
 			listaSessoes.add(sessao);
-			
 			date = date.plusDays(intervalo);
 		}
-		
+
 		return listaSessoes;
 		
 	}

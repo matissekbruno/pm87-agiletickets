@@ -94,9 +94,15 @@ public class EspetaculoTest {
 		LocalTime horario = new LocalTime();
 		Periodicidade periodicidade = Periodicidade.DIARIA;
 		
-		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		List<Sessao> listaSessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		assertTrue(lista.size() == 1);
+		assertTrue(listaSessoes.size() == 1);
+		int i = 0;
+		for (Sessao sessao : listaSessoes) {
+			Assert.assertEquals(sessao.getEspetaculo(), espetaculo);
+			Assert.assertEquals(sessao.getInicio(), inicio.plusDays(i*periodicidade.getIntervalo()).toDateTime(horario));
+			i++;
+		}
 
 	}
 	
@@ -108,9 +114,15 @@ public class EspetaculoTest {
 		LocalTime horario = new LocalTime();
 		Periodicidade periodicidade = Periodicidade.DIARIA;
 		
-		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		List<Sessao> listaSessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		assertTrue(lista.size() == 5);
+		assertTrue(listaSessoes.size() == 5);
+		int i = 0;
+		for (Sessao sessao : listaSessoes) {
+			Assert.assertEquals(sessao.getEspetaculo(), espetaculo);
+			Assert.assertEquals(sessao.getInicio(), inicio.plusDays(i*periodicidade.getIntervalo()).toDateTime(horario));
+			i++;
+		}
 	}
 	
 	@Test
@@ -121,9 +133,10 @@ public class EspetaculoTest {
 		LocalTime horario = new LocalTime();
 		Periodicidade periodicidade = Periodicidade.DIARIA;
 		
-		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		List<Sessao> listaSessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		assertTrue(lista.size() == 0);
+		assertTrue(listaSessoes.size() == 0);
+
 	}
 	
 	@Test
@@ -134,9 +147,15 @@ public class EspetaculoTest {
 		LocalTime horario = new LocalTime();
 		Periodicidade periodicidade = Periodicidade.SEMANAL;
 		
-		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		List<Sessao> listaSessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		assertTrue(lista.size() == 1);
+		assertTrue(listaSessoes.size() == 1);
+		int i = 0;
+		for (Sessao sessao : listaSessoes) {
+			Assert.assertEquals(sessao.getEspetaculo(), espetaculo);
+			Assert.assertEquals(sessao.getInicio(), inicio.plusDays(i*periodicidade.getIntervalo()).toDateTime(horario));
+			i++;
+		}
 	}
 	
 	@Test
@@ -147,9 +166,15 @@ public class EspetaculoTest {
 		LocalTime horario = new LocalTime();
 		Periodicidade periodicidade = Periodicidade.SEMANAL;
 		
-		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		List<Sessao> listaSessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		assertTrue(lista.size() == 2);
+		assertTrue(listaSessoes.size() == 2);
+		int i = 0;
+		for (Sessao sessao : listaSessoes) {
+			Assert.assertEquals(sessao.getEspetaculo(), espetaculo);
+			Assert.assertEquals(sessao.getInicio(), inicio.plusDays(i*periodicidade.getIntervalo()).toDateTime(horario));
+			i++;
+		}
 	}
 	
 	@Test
@@ -160,9 +185,15 @@ public class EspetaculoTest {
 		LocalTime horario = new LocalTime();
 		Periodicidade periodicidade = Periodicidade.SEMANAL;
 		
-		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		List<Sessao> listaSessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		assertTrue(lista.size() == 3);
+		assertTrue(listaSessoes.size() == 3);
+		int i = 0;
+		for (Sessao sessao : listaSessoes) {
+			Assert.assertEquals(sessao.getEspetaculo(), espetaculo);
+			Assert.assertEquals(sessao.getInicio(), inicio.plusDays(i*periodicidade.getIntervalo()).toDateTime(horario));
+			i++;
+		}
 	}
 	
 	
@@ -174,9 +205,10 @@ public class EspetaculoTest {
 		LocalTime horario = new LocalTime();
 		Periodicidade periodicidade = Periodicidade.SEMANAL;
 		
-		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		List<Sessao> listaSessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
 		
-		assertTrue(lista.size() == 0);
+		assertTrue(listaSessoes.size() == 0);
+		
 	}
 	
 
