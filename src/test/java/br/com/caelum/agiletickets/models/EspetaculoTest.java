@@ -3,6 +3,11 @@ package br.com.caelum.agiletickets.models;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class EspetaculoTest {
@@ -80,5 +85,101 @@ public class EspetaculoTest {
 
 		return sessao;
 	}
+	
+	@Test
+	public void deveCriarUmaSessaoCasoDatasDeInicioEFimSejamIguaisPeriodicidadeDiaria() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2018, 11, 05);
+		LocalDate fim = new LocalDate(2018, 11, 05);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.DIARIA;
+		
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		assertTrue(lista.size() == 1);
+
+	}
+	
+	@Test
+	public void deveCriarCincoSessoesCasoADiferencaEntreDataDeInicioEFimSejaDe4DiasPeriodicidadeDiaria() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2018, 11, 5);
+		LocalDate fim = new LocalDate(2018, 11, 9);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.DIARIA;
+		
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		assertTrue(lista.size() == 5);
+	}
+	
+	@Test
+	public void naoDeveCriarSessoesCasoADataDeInicioSejaMaiorQueADeFimPeriodicidadeDiaria() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2018, 11, 5);
+		LocalDate fim = new LocalDate(2018, 11, 4);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.DIARIA;
+		
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		assertTrue(lista.size() == 0);
+	}
+	
+	@Test
+	public void deveCriarUmaSessaoCasoDatasDeInicioEFimSejamIguaisNaPeriodicidadeSemanal() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2018, 11, 5);
+		LocalDate fim = new LocalDate(2018, 11, 5);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		assertTrue(lista.size() == 1);
+	}
+	
+	@Test
+	public void deveCriarDuasSessoesCasoADiferencaEntreDataDeInicioEFimSejaDe7DiasPeriodicidadeSemanal() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2018, 11, 5);
+		LocalDate fim = new LocalDate(2018, 11, 12);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		assertTrue(lista.size() == 2);
+	}
+	
+	@Test
+	public void deveCriarTresSessoesCasoADiferencaEntreDataDeInicioEFimSejaDe20DiasPeriodicidadeSemanal() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2018, 11, 5);
+		LocalDate fim = new LocalDate(2018, 11, 25);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		assertTrue(lista.size() == 3);
+	}
+	
+	
+	@Test
+	public void naoDeveCriarSessoesCasoADataDeInicioSejaMaiorQueADeFimPeriodicidadeSemanal() {
+		Espetaculo espetaculo = new Espetaculo();
+		LocalDate inicio = new LocalDate(2018, 11, 5);
+		LocalDate fim = new LocalDate(2018, 11, 4);
+		LocalTime horario = new LocalTime();
+		Periodicidade periodicidade = Periodicidade.SEMANAL;
+		
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
+		
+		assertTrue(lista.size() == 0);
+	}
+	
+
+	
 	
 }
